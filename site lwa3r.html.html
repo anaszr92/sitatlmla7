@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Store</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #080101;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #4c98af;
+            color: rgb(212, 30, 30);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .product {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(247, 244, 244, 0.1);
+            margin: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .cart {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #4c90af;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>mrhba bay wahd</h1>
+        <p>chi haja lawakhir</p>
+    </header>
+    
+    <div class="products">
+        <div class="product">
+            <h2>iphone 16 pro max chi haja n9ya</h2>
+            <img src="c:\Users\anasa\Desktop\download1.jpg" alt="Phone Model 1">
+            <p>taman: $1700</p>
+            <button onclick="addToCart('Phone Model 1', 699)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h2>iphone 16 chi haja n9ya</h2>
+            <img src="c:\Users\anasa\Desktop\download2.jpg" alt="Phone Model 2">
+            <p>taman: $1000</p>
+            <button onclick="addToCart('Phone Model 2', 799)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h2>iphone 15 pro max chi haja n9ya</h2>
+            <img src="c:\Users\anasa\Desktop\download.jpg" alt="Phone Model 3">
+            <p>taman: $900</p>
+            <button onclick="addToCart('Phone Model 3', 599)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h2>slila
+
+        </h2>
+        <ul id="cartItems"></ul>
+        <p id="cartTotal">Total: $0</p>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - $${item.price}`;
+                cartItems.appendChild(li);
+                total += item.price;
+            });
+
+            cartTotal.textContent = `lmjmou3: $${total}`;
+        }
+    </script>
+</body>
+</html>
